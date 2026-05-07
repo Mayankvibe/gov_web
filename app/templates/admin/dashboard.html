@@ -1,0 +1,300 @@
+<!DOCTYPE html>
+<html lang="hi">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>सेवानिवृत्त कर्मचारी प्रबंधन</title>
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <style>
+
+        body{
+            background:#f5f5f5;
+            font-size:14px;
+        }
+
+        .header{
+            background:#0d6efd;
+            color:white;
+            padding:15px;
+        }
+
+        .sidebar{
+            background:white;
+            min-height:100vh;
+            border-right:1px solid #ddd;
+            padding-top:20px;
+        }
+
+        .sidebar .nav-link{
+            color:black;
+            margin-bottom:10px;
+        }
+
+        .card-box{
+            background:white;
+            padding:20px;
+            border-radius:8px;
+            text-align:center;
+            border:1px solid #ddd;
+        }
+
+        .table-box{
+            background:white;
+            padding:20px;
+            border-radius:8px;
+        }
+
+    </style>
+
+</head>
+
+<body>
+
+<div class="header">
+
+    <h3>सेवानिवृत्त कर्मचारी लाभ प्रबंधन प्रणाली</h3>
+
+    <small>छत्तीसगढ़ शासन</small>
+
+</div>
+
+
+<div class="container-fluid">
+
+    <div class="row">
+
+        <!-- Sidebar -->
+
+        <div class="col-md-2 sidebar">
+
+            <ul class="nav flex-column">
+
+                <li>
+                    <a class="nav-link" href="#">
+                        डैशबोर्ड
+                    </a>
+                </li>
+
+                <li>
+                    <a class="nav-link" href="#">
+                        कर्मचारी
+                    </a>
+                </li>
+
+                <li>
+                    <a class="nav-link" href="#">
+                        रिपोर्ट
+                    </a>
+                </li>
+
+                <li>
+                    <a class="nav-link" href="#">
+                        लॉगआउट
+                    </a>
+                </li>
+
+            </ul>
+
+        </div>
+
+
+        <!-- Main -->
+
+        <div class="col-md-10 p-4">
+
+            <!-- Cards -->
+
+            <div class="row mb-4">
+
+                <div class="col-md-3">
+
+                    <div class="card-box">
+
+                        <h6>कुल कर्मचारी</h6>
+
+                        <h3>
+                            {{ employees|length }}
+                        </h3>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <!-- Search -->
+
+            <form class="row mb-3">
+
+                <div class="col-md-4">
+
+                    <input
+                        name="search"
+                        class="form-control"
+                        placeholder="नाम खोजें">
+
+                </div>
+
+
+                <div class="col-md-3">
+
+                    <input
+                        type="date"
+                        name="date"
+                        class="form-control">
+
+                </div>
+
+
+                <div class="col-md-2">
+
+                    <button class="btn btn-primary">
+
+                        खोजें
+
+                    </button>
+
+                </div>
+
+            </form>
+
+
+            <!-- Table -->
+
+            <div class="table-box">
+
+                <table class="table table-bordered">
+
+                    <thead>
+
+                    <tr>
+
+                        <th>क्रमांक</th>
+
+                        <th>कर्मचारी का नाम</th>
+
+                        <th>जीपीएफ/डीपीएफ नंबर/ प्रान नंबर</th>
+
+                       
+
+                        <th> पदमुक्त तिथि</th>
+
+                        <th>डी.डी.ओ कोड</th>
+
+                         <th>कर्मचारी कोड </th> 
+
+                        
+
+                        <th>पेंशन</th>
+
+                        <th>उपदान</th>
+
+                        <th>जी.पी.एफ.</th>
+
+                        <th>नकदीकरण अवकाश</th>
+
+                        <th></th>
+
+                        <th>समूह बीमा</th>
+
+                    </tr>
+
+                    </thead>
+
+
+                    <tbody>
+
+                    {% for emp in employees %}
+
+                    <tr>
+
+                        <td>
+                            {{ emp.id }}
+                        </td>
+
+                        <td>
+                            {{ emp.employee_name }}
+                        </td>
+
+                        <td>
+                            {{ emp.designation }}
+                        </td>
+
+                        <td>
+                            {{ emp.retirement_date }}
+                        </td>
+
+                        <td>
+                            {{ emp.ddo_info }}
+                        </td>
+                        <td>
+                            {{ emp.employe_code }}
+                        </td>
+                        <td>
+                            <input type="checkbox"
+                            {% if emp.pension %}
+                            checked
+                            {% endif %}>
+                        </td>
+
+                        <td>
+                            <input type="checkbox"
+                            {% if emp.upadhan %}
+                            checked
+                            {% endif %}>
+                        </td>
+
+                        <td>
+                            <input type="checkbox"
+                            {% if emp.jpf %}
+                            checked
+                            {% endif %}>
+                        </td>
+
+                        <td>
+                            <input type="checkbox"
+                            {% if emp.nakdikaran %}
+                            checked
+                            {% endif %}>
+                        </td>
+
+                        <td>
+                            <input type="checkbox"
+                            {% if emp.avkas %}
+                            checked
+                            {% endif %}>
+                        </td>
+
+                        <td>
+                            <input type="checkbox"
+                            {% if emp.life_insurance %}
+                            checked
+                            {% endif %}>
+                        </td>
+
+                    </tr>
+
+                    {% endfor %}
+
+                    </tbody>
+
+                </table>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+</body>
+
+</html>
