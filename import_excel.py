@@ -59,9 +59,9 @@ with app.app_context():
                     row["डी.डी.ओ कोड"]
                 ).strip(),
 
-                retirement_date=row[
-                    "पदमुक्त तिथि"
-                ]
+               retirement_date=row[
+    "पदमुक्त तिथि"
+].date()
             )
 
 

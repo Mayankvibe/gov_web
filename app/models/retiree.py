@@ -15,7 +15,16 @@ class Retiree(
         primary_key=True
     )
 
+    user_id = db.Column(
 
+    db.Integer,
+
+    db.ForeignKey(
+
+        "users.id"
+    )
+) 
+    
     employee_name = db.Column(
 
         db.String(200)

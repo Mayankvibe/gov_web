@@ -1,0 +1,661 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+    <title>
+        Employee Entry
+    </title>
+
+
+    <style>
+
+        body{
+
+            margin:0;
+
+            font-family:Arial;
+
+            background:#edf0f4;
+        }
+
+
+
+        .container{
+
+            width:95%;
+
+            max-width:1300px;
+
+            margin:40px auto;
+        }
+
+
+
+        .form-section{
+
+            background:white;
+
+            border-radius:20px;
+
+            padding:40px;
+
+            box-shadow:0 5px 20px rgba(0,0,0,.08);
+        }
+
+
+
+        .top{
+
+            display:flex;
+
+            justify-content:space-between;
+
+            align-items:center;
+        }
+
+
+
+        h1{
+
+            margin:0;
+
+            font-size:42px;
+        }
+
+
+
+        .logout{
+
+            background:red;
+
+            color:white;
+
+            border:none;
+
+            padding:14px 24px;
+
+            border-radius:14px;
+
+            cursor:pointer;
+
+            font-size:18px;
+        }
+
+
+
+        .grid{
+
+            display:grid;
+
+            grid-template-columns:1fr 1fr;
+
+            gap:30px;
+
+            margin-top:40px;
+        }
+
+
+
+        label{
+
+            display:block;
+
+            font-size:22px;
+
+            margin-bottom:12px;
+
+            font-weight:bold;
+        }
+
+
+
+        input,
+        select{
+
+            width:100%;
+
+            padding:18px;
+
+            border-radius:14px;
+
+            border:1px solid #cfd8e3;
+
+            font-size:18px;
+
+            box-sizing:border-box;
+        }
+
+
+.status-box input[type="checkbox"]{
+    accent-color: black;
+    width:18px;
+    height:18px;
+    cursor:pointer;
+}
+
+
+        .status-item{
+
+            margin-bottom:20px;
+
+            font-size:22px;
+        }
+
+
+
+        .status-item input{
+
+            width:auto;
+
+            margin-right:12px;
+
+            transform:scale(1.4);
+        }
+
+
+
+        .submit{
+
+            margin-top:40px;
+
+            width:420px;
+
+            background:#0047d9;
+
+            color:white;
+
+            border:none;
+
+            padding:20px;
+
+            border-radius:14px;
+
+            font-size:22px;
+
+            cursor:pointer;
+        }
+
+
+
+        .records-section{
+
+            margin-top:50px;
+
+            background:white;
+
+            border-radius:20px;
+
+            padding:35px;
+
+            box-shadow:0 5px 20px rgba(0,0,0,.08);
+        }
+
+
+
+        .records-section h2{
+
+            margin-top:0;
+
+            margin-bottom:25px;
+
+            font-size:34px;
+        }
+
+
+
+        .table-box{
+
+            width:100%;
+
+            max-height:500px;
+
+            overflow-y:auto;
+
+            border:1px solid #d8dee8;
+
+            border-radius:14px;
+        }
+
+
+
+        table{
+
+            width:100%;
+
+            border-collapse:collapse;
+        }
+
+
+
+        th{
+
+            text-align:center;
+
+            background:#f4f7fb;
+
+            padding:18px;
+
+            font-size:18px;
+
+            position:sticky;
+
+            top:0;
+        }
+
+
+
+        td{
+
+            text-align:center;
+
+            padding:18px;
+
+            border-top:1px solid #e5e9ef;
+
+            font-size:16px;
+        }
+
+
+
+        tr:hover{
+
+            background:#f8fbff;
+        }
+
+    </style>
+
+</head>
+
+<body>
+
+
+
+<div class="container">
+
+
+
+    <div class="form-section">
+
+
+
+        <div class="top">
+
+
+            <h1>
+सेवा निवृत्त पेंशनर विवरण 
+            </h1>
+
+
+            <button
+                class="logout"
+                type="button"
+            >
+
+                Logout
+
+            </button>
+
+
+        </div>
+
+
+
+        <form method="POST">
+
+
+
+            <div class="grid">
+
+
+
+                <div>
+
+                    <label>
+
+                        नाम
+
+                    </label>
+
+
+                    <input
+                        name="employee_name"
+                    >
+
+                </div>
+
+
+
+
+
+                <div>
+
+                    <label>
+
+                        
+                          पद नाम
+
+                        
+
+                    </label>
+
+
+                    <select
+                        name="designation"
+                    >
+
+                        <option>
+
+                            पद नाम
+
+                        </option>
+
+                        <option>
+
+                            Clerk
+
+                        </option>
+
+                        <option>
+
+                            Engineer
+
+                        </option>
+
+                        <option>
+
+                            Officer
+
+                        </option>
+
+                    </select>
+
+                </div>
+
+
+
+
+
+                <div>
+
+                    <label>
+
+                        सेवानिवृत्त
+दिनांक 
+
+                    </label>
+
+
+                    <input
+                        type="date"
+                        name="retirement_date"
+                    >
+
+                </div>
+
+
+
+
+
+                <div>
+
+
+                    <label>
+
+                      स्वत्तवो के भुगतान का विवरण
+
+                    </label>
+
+
+                    <div class="status-box">
+
+
+                        <div class="status-item">
+
+                            <input
+                                type="checkbox"
+                                name="jpf"
+                            >
+
+                            जीपीएफ 
+
+                        </div>
+
+
+
+                        <div class="status-item">
+
+                            <input
+                                type="checkbox"
+                                name="nakdikaran_avkas"
+                            >
+
+                            नकदीकरण अवकाश
+
+                        </div>
+
+
+
+                        <div class="status-item">
+
+                            <input
+                                type="checkbox"
+                                name="life_insurance"
+                            >
+
+                            समूह बीमा
+
+                        </div>
+
+
+                    </div>
+
+
+                </div>
+
+
+
+
+
+                <div>
+
+                    <label>
+
+                        संबंधित डी.डी.ओ का विवरण 
+
+
+                    </label>
+
+
+                    <input
+                        name="ddo_info"
+                    >
+
+                </div>
+
+
+
+            </div>
+
+
+
+            <button class="submit">
+
+                Submit Entry
+
+            </button>
+
+
+        </form>
+
+
+    </div>
+
+
+
+
+
+    <div class="records-section">
+
+
+        <h2>
+
+            Submitted Records
+
+        </h2>
+
+
+        <div class="table-box">
+
+
+            <table>
+
+
+                <thead>
+
+                    <tr>
+
+                        <th>नाम</th>
+
+                        <th>पद नाम</th>
+
+                        <th>दिनांक </th>
+
+                        <th>पेंशन</th>
+
+                        <th>उपादान</th>
+
+                        <th>जीपीएफ</th>
+
+                        <th>नकदीकरण</th>
+
+                        <th>बीमा</th>
+
+                    </tr>
+
+                </thead>
+
+
+
+                <tbody>
+
+
+                    {% for emp in employees %}
+
+
+                    <tr>
+
+
+                        <td>{{ emp.employee_name }}</td>
+
+                        <td>{{ emp.designation }}</td>
+
+                        <td>{{ emp.retirement_date }}</td>
+
+
+
+                        <td>
+
+                            <input
+                                type="checkbox"
+
+                                {% if emp.pension %}
+                                checked
+                                {% endif %}
+
+                                disabled
+                            >
+
+                        </td>
+
+
+
+                        <td>
+
+                            <input
+                                type="checkbox"
+
+                                {% if emp.upadhan %}
+                                checked
+                                {% endif %}
+
+                                disabled
+                            >
+
+                        </td>
+
+
+
+                        <td>
+
+                            <input
+                                type="checkbox"
+
+                                {% if emp.jpf %}
+                                checked
+                                {% endif %}
+
+                                disabled
+                            >
+
+                        </td>
+
+
+
+                        <td>
+
+                            <input
+                                type="checkbox"
+
+                                {% if emp.nakdikaran_avkas %}
+                                checked
+                                {% endif %}
+
+                                disabled
+                            >
+
+                        </td>
+
+
+
+                        <td>
+
+                            <input
+                                type="checkbox"
+
+                                {% if emp.life_insurance %}
+                                checked
+                                {% endif %}
+
+                                disabled
+                            >
+
+                        </td>
+
+
+                    </tr>
+
+
+                    {% endfor %}
+
+
+                </tbody>
+
+
+            </table>
+
+
+        </div>
+
+
+    </div>
+
+
+
+</div>
+
+
+
+</body>
+
+</html>
