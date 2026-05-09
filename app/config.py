@@ -8,8 +8,13 @@ class Config:
         "dev-secret"
     )
 
-    SQLALCHEMY_DATABASE_URI = os.getenv(
-        "DATABASE_URL"
+    SQLALCHEMY_DATABASE_URI = (
+
+        os.getenv("DATABASE_URL")
+
+        or
+
+        "postgresql://postgres:maya1234@localhost/employe_db"
     )
 
     SQLALCHEMY_TRACK_MODIFICATIONS = False
